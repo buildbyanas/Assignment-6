@@ -3,12 +3,12 @@ import Image from "next/image";
 import { useState } from "react";
 import logo from "@/assets/logo.png";
 import Link from "next/link";
-//import { useWorkout } from "@/Context/WorkOutContext";
+import { useWorkout } from "@/Context/WorkOutContext";
 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  //const { plan, saved } = useWorkout();
+  const { plan, saved } = useWorkout();
 
   return (
     <nav className="border-b border-zinc-800 bg-[#0b0c0f] text-white">
@@ -47,9 +47,9 @@ const Navbar = () => {
 >
   <span>Plan</span>
 
-  {/* <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-lime-400 px-1 text-xs font-bold text-black transition-transform">
+  <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-lime-400 px-1 text-xs font-bold text-black transition-transform">
     {plan.length}
-  </span> */}
+  </span>
 </Link>
 
   <Link
@@ -58,9 +58,9 @@ const Navbar = () => {
 >
   <span>Saved</span>
 
-  {/* <span className="flex h-5 min-w-5 items-center justify-center rounded-full border border-zinc-700 px-1 text-xs text-zinc-400 transition-all group-hover:border-lime-400 group-hover:text-lime-400 ">
+  <span className="flex h-5 min-w-5 items-center justify-center rounded-full border border-zinc-700 px-1 text-xs text-zinc-400 transition-all group-hover:border-lime-400 group-hover:text-lime-400 ">
     {saved.length}
-  </span> */}
+  </span>
 </Link>
 </div>
         {/* Mobile Menu Button */}
