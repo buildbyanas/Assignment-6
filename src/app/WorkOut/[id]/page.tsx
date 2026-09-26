@@ -60,7 +60,7 @@ export default async function WorkoutDetailsPage({
         <div className="grid gap-8 lg:grid-cols-2">
 
           {/* LEFT - IMAGE */}
-          <div className="relative h-[500px] overflow-hidden rounded-xl sm:h-[500px] lg:h-[550px]">
+          <div className="relative h-[400px] overflow-hidden rounded-xl sm:h-[500px] lg:h-[750px] my-4">
             <Image
               src={workout.image}
               alt={workout.name}

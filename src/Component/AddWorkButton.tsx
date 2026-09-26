@@ -48,7 +48,7 @@ export default function AddWorkoutButtons({
             saveWorkout(workout);
           }
         }}
-        className="rounded-lg border border-zinc-700 px-5 py-3 text-sm text-zinc-300 transition hover:border-zinc-500 hover:bg-zinc-900 hover:text-white"
+        className="rounded-lg border border-zinc-700 px-12 py-3 text-sm text-zinc-300 transition hover:border-zinc-500 hover:bg-zinc-900 hover:text-white"
       >
         {saved ? "✓ Saved" : "♡ Save for later"}
       </button>
