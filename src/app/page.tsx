@@ -5,9 +5,9 @@ import React from 'react';
 const page = () => {
   return (
     <div>
-      <Banner></Banner>
+        <Banner></Banner>
         <WorkOutLibrary></WorkOutLibrary>
-    </div>
+        </div>
   );
 };
 

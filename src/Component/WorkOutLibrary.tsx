@@ -13,7 +13,7 @@ const WorkoutLibrary = () => {
     const fetchWorkouts = async () => {
       try {
         const response = await fetch(
-          "https://api.abcz.workers.dev/api/fitlog"
+          "https://api.api-store.workers.dev/api/fitlog"
         );
 
         if (!response.ok) {

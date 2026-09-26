@@ -8,11 +8,19 @@ const Footer = () => {
 
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <Image src={logo} alt="Logo" width={32} height={32} className="h-8 w-8 object-contain"/>
+          <Image
+            src={logo}
+            alt="Logo"
+            width={32}
+            height={32}
+            className="h-8 w-8 object-contain"
+          />
 
-          <span className="text-xs font-black tracking-wide text-white">FITLOG</span>
+          <span className="text-xs font-black tracking-wide text-white">
+            FITLOG
+          </span>
         </div>
-        
+
         {/* Copyright */}
         <p className="text-center text-[10px] text-zinc-500 sm:text-right">
           © 2026 FitLog — Workout Library. Train hard, log honest.

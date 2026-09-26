@@ -11,7 +11,7 @@ interface WorkoutDetailsPageProps {
 
 const getWorkout = async (id: string): Promise<Exercise | undefined>  => {
   const response = await fetch(
-    "https://api.abcz.workers.dev/api/fitlog",
+    "https://api.api-store.workers.dev/api/fitlog",
     {
       cache: "no-store",
     }
@@ -60,10 +60,11 @@ export default async function WorkoutDetailsPage({
         <div className="grid gap-8 lg:grid-cols-2">
 
           {/* LEFT - IMAGE */}
-          <div className="relative h-[400px] overflow-hidden rounded-xl sm:h-[500px] lg:h-[550px]">
+          <div className="relative h-[500px] overflow-hidden rounded-xl sm:h-[500px] lg:h-[550px]">
             <Image
               src={workout.image}
               alt={workout.name}
+              
               fill
               priority
               className="object-cover"

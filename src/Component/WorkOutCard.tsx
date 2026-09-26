@@ -13,12 +13,8 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
       className="group block overflow-hidden rounded-xl border border-zinc-800 bg-[#14161b] transition-all duration-300 hover:-translate-y-1 hover:border-lime-400/40 hover:shadow-xl hover:shadow-black/20"
     >
       {/* Image */}
-      <div className="relative h-44 w-full overflow-hidden">
-        <Image
-          src={workout.image}
-          alt={workout.name}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+      <div className="relative h-100 w-full overflow-hidden">
+        <Image src={workout.image} alt={workout.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
 

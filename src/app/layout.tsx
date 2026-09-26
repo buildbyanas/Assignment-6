@@ -28,13 +28,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        
         <WorkoutProvider>
           <Navbar />
           {children}
           <Footer />
           <ToastContainer position="top-right" autoClose={2000} theme="dark"/>
           </WorkoutProvider>
-        </body>
+        
+      </body>
     </html>
   );
 }
