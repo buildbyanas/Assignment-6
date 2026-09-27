@@ -7,7 +7,7 @@ import pic from "@/assets/banner.png"
       <div className="mx-auto flex max-w-7xl flex-col items-center overflow-hidden rounded-xl border border-zinc-800 bg-[#14161b] px-6 py-10 sm:px-10 lg:flex-row lg:px-12 lg:py-12">
 
         {/* Left Content */}
-        <div className="w-full lg:w-1/2">
+        <div className="w-full lg:w-1/2 ">
 
           {/* Small Heading */}
           <p className="mb-5 text-xs font-bold uppercase tracking-widest text-lime-400">
@@ -26,15 +26,9 @@ import pic from "@/assets/banner.png"
             into today&apos;s plan, and watch the week&apos;s work add up.
           </p>
 
-          {/* Button */}
-          <button
-            className="mt-6 rounded-md bg-lime-400 px-5 py-3 text-xs font-bold
-            uppercase text-black transition-all duration-200
-            hover:bg-lime-300 hover:shadow-lg hover:shadow-lime-400/20
-            active:scale-95"
-          >
-            Browse Workouts
-          </button>
+         <a
+            href="#library"
+           className="mt-10 inline-block rounded-full bg-lime-400 px-6 py-3 font-bold text-black transition hover:bg-lime-300">BROWSE WORKOUT</a>
         </div>
 
         {/* Right Image */}

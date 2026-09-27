@@ -34,16 +34,21 @@ const WorkoutLibrary = () => {
   }, []);
 
   if (loading) {
-    return (
-      <section className="bg-[#08090b] px-4 py-10">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-center text-zinc-400">
-            Loading workouts...
-          </p>
-        </div>
-      </section>
-    );
-  }
+  return (
+    <section className="flex min-h-[400px] items-center justify-center bg-[#08090b] px-4 py-10">
+      <div className="text-center">
+
+        {/* Loading Spinner */}
+        <div className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-zinc-700 border-t-lime-400"></div>
+
+        <p className="mt-4 text-sm text-zinc-400">
+          Loading workouts...
+        </p>
+
+      </div>
+    </section>
+  );
+}
 
   if (error) {
     return (
@@ -62,7 +67,7 @@ const WorkoutLibrary = () => {
 
         {/* Section Header */}
         <div className="mb-8">
-          <h2 className="text-3xl font-black uppercase tracking-tight text-white">
+          <h2 id="library" className="text-3xl font-black uppercase tracking-tight text-white">
             The Library
           </h2>
 

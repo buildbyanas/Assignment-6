@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 import logo from "@/assets/logo.png";
 import { useWorkout } from "@/Context/WorkOutContext";
@@ -10,11 +11,16 @@ import { useWorkout } from "@/Context/WorkOutContext";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const pathname = usePathname();
+
   const { plan, saved } = useWorkout();
 
   const closeMenu = () => {
     setIsOpen(false);
   };
+
+  const isWorkoutsActive = pathname === "/";
+  const isPlanPage = pathname === "/Plan";
 
   return (
     <nav className="border-b border-zinc-800 bg-[#0b0c0f] text-white">
@@ -40,27 +46,43 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-3 md:flex">
+
+          {/* Workouts */}
           <Link
             href="/"
-            className="rounded-full bg-black px-4 py-3 text-sm font-medium text-zinc-200 transition-all duration-200 hover:bg-lime-200/20 hover:text-lime-300"
+            className={`rounded-full px-4 py-3 text-sm font-medium transition-all duration-200 ${
+              isWorkoutsActive
+                ? "bg-lime-400 text-black"
+                : "bg-black text-zinc-200 hover:bg-lime-200/20 hover:text-lime-300"
+            }`}
           >
             Workouts
           </Link>
 
+          {/* My Plan */}
           <Link
             href="/Plan?tab=plan"
-            className="rounded-full bg-black px-4 py-3 text-sm font-medium text-zinc-200 transition-all duration-200 hover:bg-lime-200/20 hover:text-lime-300"
+            className={`rounded-full px-4 py-3 text-sm font-medium transition-all duration-200 ${
+              isPlanPage
+                ? "bg-lime-400 text-black"
+                : "bg-black text-zinc-200 hover:bg-lime-200/20 hover:text-lime-300"
+            }`}
           >
             My Plan
           </Link>
         </div>
 
         {/* Desktop Right Side */}
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-2 md:flex">
+
           {/* Plan */}
           <Link
             href="/Plan?tab=plan"
-            className="group flex items-center gap-2 rounded-full px-3 py-2 text-sm text-zinc-400 transition-all hover:bg-zinc-800 hover:text-white"
+            className={`group flex items-center gap-2 rounded-full px-3 py-2 text-sm transition ${
+              isPlanPage
+                ? "bg-zinc-800 text-white"
+                : "text-zinc-400 hover:bg-zinc-800 hover:text-white"
+            }`}
           >
             <span>Plan</span>
 
@@ -72,11 +94,11 @@ const Navbar = () => {
           {/* Saved */}
           <Link
             href="/Plan?tab=saved"
-            className="group flex items-center gap-2 rounded-full px-3 py-2 text-sm text-zinc-500 transition-all hover:bg-zinc-800 hover:text-white"
+            className="group flex items-center gap-2 rounded-full px-3 py-2 text-sm text-zinc-500 transition hover:bg-zinc-800 hover:text-white"
           >
             <span>Saved</span>
 
-            <span className="flex h-5 min-w-5 items-center justify-center rounded-full border border-zinc-700 px-1 text-xs text-zinc-400 transition-all group-hover:border-lime-400 group-hover:text-lime-400">
+            <span className="flex h-5 min-w-5 items-center justify-center rounded-full border border-zinc-700 px-1 text-xs text-zinc-400 transition group-hover:border-lime-400 group-hover:text-lime-400">
               {saved.length}
             </span>
           </Link>
@@ -84,9 +106,11 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
+          type="button"
           onClick={() => setIsOpen((current) => !current)}
-          className="rounded-md p-2 text-zinc-300 hover:bg-zinc-800 md:hidden"
+          className="rounded-md p-2 text-zinc-300 transition hover:bg-zinc-800 md:hidden"
           aria-label="Toggle menu"
+          aria-expanded={isOpen}
         >
           {isOpen ? (
             <svg
@@ -129,7 +153,11 @@ const Navbar = () => {
             <Link
               href="/"
               onClick={closeMenu}
-              className="rounded-lg bg-lime-400/10 px-4 py-3 text-sm font-medium text-lime-400 transition hover:bg-lime-400/20"
+              className={`rounded-lg px-4 py-3 text-sm font-medium transition ${
+                isWorkoutsActive
+                  ? "bg-lime-400/10 text-lime-400"
+                  : "text-zinc-400 hover:bg-zinc-800 hover:text-white"
+              }`}
             >
               Workouts
             </Link>
@@ -138,7 +166,11 @@ const Navbar = () => {
             <Link
               href="/Plan?tab=plan"
               onClick={closeMenu}
-              className="rounded-lg px-4 py-3 text-sm text-zinc-400 transition hover:bg-zinc-800 hover:text-white"
+              className={`rounded-lg px-4 py-3 text-sm font-medium transition ${
+                isPlanPage
+                  ? "bg-lime-400/10 text-lime-400"
+                  : "text-zinc-400 hover:bg-zinc-800 hover:text-white"
+              }`}
             >
               My Plan
             </Link>
@@ -149,9 +181,19 @@ const Navbar = () => {
             <Link
               href="/Plan?tab=plan"
               onClick={closeMenu}
-              className="flex items-center justify-between rounded-lg px-4 py-3 transition hover:bg-zinc-800"
+              className={`flex items-center justify-between rounded-lg px-4 py-3 transition ${
+                isPlanPage
+                  ? "bg-zinc-800"
+                  : "hover:bg-zinc-800"
+              }`}
             >
-              <span className="text-sm text-zinc-400">
+              <span
+                className={`text-sm ${
+                  isPlanPage
+                    ? "text-white"
+                    : "text-zinc-400"
+                }`}
+              >
                 Plan
               </span>
 
@@ -164,9 +206,9 @@ const Navbar = () => {
             <Link
               href="/Plan?tab=saved"
               onClick={closeMenu}
-              className="flex items-center justify-between rounded-lg px-4 py-3 transition hover:bg-zinc-800"
+              className="flex items-center justify-between rounded-lg px-4 py-3 text-zinc-400 transition hover:bg-zinc-800 hover:text-white"
             >
-              <span className="text-sm text-zinc-400">
+              <span className="text-sm">
                 Saved
               </span>
 
